@@ -12,11 +12,8 @@ app.use(json());
 app.use(cors());
 
 // *** CONTROLLER DESTRUCTURING ***
-const {
-  getAllProperties,
-  postNewListing
-} = require("./controllers/clientCtrl");
-
+const { getAllProperties } = require("./controllers/clientCtrl");
+const { postNewListing } = require("./controllers/adminCtrl");
 //**** SESSIONS ****
 // app.use(
 //   session({
@@ -38,7 +35,7 @@ massive(process.env.CONNECTION_STRING)
 
 //*** ENPOINTS ***
 app.get(`/api/getAll`, getAllProperties);
-// app.post("/api/postNew", postNewListing);
+app.post("/api/postNew", postNewListing);
 
 app.listen(port, () => {
   console.log(`Port ${port} is listening...`);
