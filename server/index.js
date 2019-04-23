@@ -1,18 +1,18 @@
-require("dotenv").config();
+require('dotenv').config();
 // *** Dependencies  ***
 // const session = require('express-session');
-const express = require("express");
-const massive = require("massive");
-const { json } = require("body-parser");
-const cors = require("cors");
+const express = require('express');
+const massive = require('massive');
+const { json } = require('body-parser');
+const cors = require('cors');
 const port = process.env.PORT || 3001;
 const app = express();
 app.use(json());
 app.use(cors());
 
 // *** CONTROLLER DESTRUCTURING ***
-const { getAllProperties } = require("./controllers/clientCtrl");
-const { postNewListing } = require("./controllers/adminCtrl");
+const { getAllProperties } = require('./controllers/clientCtrl');
+const { postNewListing } = require('./controllers/adminCtrl');
 
 //**** SESSIONS ****
 // app.use(
@@ -29,13 +29,13 @@ const { postNewListing } = require("./controllers/adminCtrl");
 //*** CONNECTION TO DB ***
 massive(process.env.CONNECTION_STRING)
   .then(dbInstance => {
-    app.set("db", dbInstance);
+    app.set('db', dbInstance);
   })
   .catch(err => console.log(err));
 
 //*** ENDPOINTS ***
-app.get("/api/getAll", getAllProperties);
-app.post("/api/postNew", postNewListing);
+app.get('/api/getAll', getAllProperties);
+app.post('/api/postNew', postNewListing);
 
 app.listen(port, () => {
   console.log(`Port ${port} is listening...`);

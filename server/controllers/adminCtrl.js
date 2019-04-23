@@ -1,7 +1,7 @@
 module.exports = {
   postNewListing: (req, res, next) => {
     console.log(req.body);
-    const db = req.app.post("db");
+    const db = req.app.post('db');
     const {
       home_type,
       bed,
