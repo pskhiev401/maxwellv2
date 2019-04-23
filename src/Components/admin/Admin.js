@@ -12,9 +12,21 @@ class Admin extends Component {
       sqft: [],
       lot_size: [],
       status: [],
-      photo_url: []
+      photo_url: [],
+      home_address: [],
+      homes: []
     };
   }
+
+  componentDidMount() {
+    this.getAllHomes();
+  }
+
+  getAllHomes = () => {
+    axios.get('/api/getAll').then(res => {
+      this.setState({ homes: res.data });
+    });
+  };
 
   handleSubmit = () => {
     //destructuring objects in this.state for DRY-er code
@@ -40,7 +52,14 @@ class Admin extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state.homes);
+    let displayListings = this.state.homes.map((e, i) => {
+      return (
+        <div key={i}>
+          <h3>{e.home_address}</h3>
+        </div>
+      );
+    });
     return (
       <div>
         <h1>Admin Dashboard</h1>
@@ -90,6 +109,7 @@ class Admin extends Component {
             />
             <h2>Find</h2>
           </form>
+          {displayListings}
         </div>
       </div>
     );
