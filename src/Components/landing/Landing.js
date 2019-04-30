@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./Landing.scss";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './Landing.scss';
+import axios from 'axios';
 
 class Landing extends Component {
   constructor() {
@@ -12,20 +12,30 @@ class Landing extends Component {
   }
 
   componentDidMount() {
-    axios.get("/api/getAll").then(res => {
+    axios.get('/api/getAll').then(res => {
       this.setState({ homes: res.data });
     });
   }
 
   render() {
-    console.log(this.state.homes);
+    console.log(this.state);
+    const navbar_items = ['Projects', 'Communities', 'About Us', 'Contact'].map((e, i) => {
+        return (
+          <div key={i}>
+            <h3>{e}</h3>
+          </div>
+        );
+      }
+    );
+
     return (
       <div>
-        <h1 className="landing_cover">Clients Custom Homes</h1>
-        <div className="listings">
+        <div className='landing_top'> Logo Section </div>
+        <div className='navbar_section'>{navbar_items}</div>
+        <div className='landing_cover'>
           <h3>Listings</h3>
         </div>
-        <Link to="/admin">
+        <Link to='/admin'>
           <button>Go To Admin Page</button>
         </Link>
       </div>
