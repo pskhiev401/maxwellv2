@@ -33,7 +33,7 @@ class Landing extends Component {
         <div className='landing_top'> Logo Section </div>
         <div className='navbar_section'>{navbar_items}</div>
         <div className='landing_cover'>
-          <h3>Listings</h3>
+        <h3>Cover Image</h3>
         </div>
         <Link to='/admin'>
           <button>Go To Admin Page</button>
