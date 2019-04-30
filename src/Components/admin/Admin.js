@@ -23,7 +23,7 @@ class Admin extends Component {
   }
 
   getAllHomes = () => {
-    axios.get('/api/getAll').then(res => {
+    axios.get("/api/getAll").then(res => {
       this.setState({ homes: res.data });
     });
   };
@@ -50,11 +50,14 @@ class Admin extends Component {
         photo_url: photo_url,
         home_address: home_address
       })
-      .then(console.log("Submitted to Backend!"));
+      .then(response => {
+        console.log(response);
+      });
   };
 
   render() {
     // console.log(this.state.homes);
+
     let displayListings = this.state.homes.map((e, i) => {
       return (
         <div key={i}>
