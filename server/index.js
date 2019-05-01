@@ -1,18 +1,19 @@
 require('dotenv').config();
 // *** Dependencies  ***
 // const session = require('express-session');
+const port = process.env.PORT || 3001;
 const express = require('express');
 const massive = require('massive');
-const { json } = require('body-parser');
 const cors = require('cors');
-const port = process.env.PORT || 3001;
+const { json } = require('body-parser');
 const app = express();
-app.use(json());
-app.use(cors());
 
 // *** CONTROLLER DESTRUCTURING ***
 const { getAllProperties } = require('./controllers/clientCtrl');
 const { postNewListing } = require('./controllers/adminCtrl');
+
+app.use(json());
+app.use(cors());
 
 //**** SESSIONS ****
 // app.use(

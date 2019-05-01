@@ -19,7 +19,8 @@ class Landing extends Component {
 
   render() {
     console.log(this.state);
-    const navbar_items = ['Projects', 'Communities', 'About Us', 'Contact'].map((e, i) => {
+    const navbar_items = ['Projects', 'Communities', 'About Us', 'Contact'].map(
+      (e, i) => {
         return (
           <div key={i}>
             <h3>{e}</h3>
@@ -33,7 +34,7 @@ class Landing extends Component {
         <div className='landing_top'> Logo Section </div>
         <div className='navbar_section'>{navbar_items}</div>
         <div className='landing_cover'>
-        <h3>Cover Image</h3>
+          <h3>Cover Image</h3>
         </div>
         <Link to='/admin'>
           <button>Go To Admin Page</button>

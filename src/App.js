@@ -9,9 +9,9 @@ class App extends Component {
   render() {
     return (
       // <Provider store={store}>
-        <BrowserRouter>
-          <div>{routes}</div>
-        </BrowserRouter>
+      <BrowserRouter>
+        <div>{routes}</div>
+      </BrowserRouter>
       // </Provider>
     );
   }
