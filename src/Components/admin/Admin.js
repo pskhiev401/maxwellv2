@@ -6,14 +6,14 @@ class Admin extends Component {
   constructor() {
     super();
     this.state = {
-      home_type: [],
-      bed: [],
-      bath: [],
-      sqft: [],
-      lot_size: [],
-      home_status: [],
-      photo_url: [],
-      home_address: [],
+      home_type: '',
+      bed: 0,
+      bath: 0,
+      sqft: 0,
+      lot_size: 0,
+      home_status: '',
+      photo_url: '',
+      home_address: '',
       homes: []
     };
   }
@@ -29,26 +29,26 @@ class Admin extends Component {
   };
 
   handleSubmit = () => {
-    //destructuring objects in this.state for DRY-er code
-    let {
+    //destructuring objects in State
+    const {
       home_type,
       bed,
       bath,
       sqft,
       lot_size,
       home_status,
-      photo_url
+      photo_url,
+      home_address
     } = this.state;
-
-    axios
-      .post('/api/postNew', {
+    axios.post('/api/postNew', {
         home_type: home_type,
         bed: bed,
         bath: bath,
         sqft: sqft,
         lot_size: lot_size,
         home_status: home_status,
-        photo_url: photo_url
+        photo_url: photo_url,
+        home_address: home_address
       })
       .then(response => {
         this.setState({ homes: response.data });
@@ -62,7 +62,7 @@ class Admin extends Component {
       return (
         <div key={i}>
           <h1> {e.home_type}</h1>
-          {/* <h3>{e.home_address}</h3> */}
+          <h3>{e.home_address}</h3>
         </div>
       );
     });
@@ -102,10 +102,10 @@ class Admin extends Component {
               onChange={e => this.setState({ photo_url: e.target.value })}
               placeholder='Photo URL'
             />
-            {/* <input
+            <input
               onChange={e => this.setState({ home_address: e.target.value })}
               placeholder='address'
-            /> */}
+            />
           </form>
           <h2 onClick={() => this.handleSubmit()}>Submit</h2>
           {/* handleSubmit function passes all objects inside this.state  */}
