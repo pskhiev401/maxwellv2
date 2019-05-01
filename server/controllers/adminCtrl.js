@@ -1,6 +1,7 @@
 module.exports = {
   postNewListing: (req, res, next) => {
-    console.log(req.body);
+    console.log(req.body, 'console.log of req.body admin.ctrl');
+
     const db = req.app.post('db');
     const {
       home_type,
@@ -8,7 +9,7 @@ module.exports = {
       bath,
       sqft,
       lot_size,
-      status,
+      home_status,
       photo_url
     } = req.body;
     db.post_new_listing([
@@ -17,10 +18,11 @@ module.exports = {
       bath,
       sqft,
       lot_size,
-      status,
+      home_status,
       photo_url
     ])
       .then(response => {
+        console.log(response, 'response in admin.ctrl');
         res.status(200).json(response);
       })
       .catch(err => res.status(500).send(err));
