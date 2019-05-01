@@ -1,26 +1,25 @@
-.landing_top{
+.landing_top {
   height: 10vh;
   background: #b3e9e6;
 }
 
-.navbar_section{
+.navbar_section {
   margin: 20px;
   width: 90vw;
   background: lightyellow;
   border: 1.5px dashed orange;
   display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
 }
-.landing_cover{
+.landing_cover {
   height: 75vh;
   width: 98vw;
   background: lightblue;
   margin: auto;
   border: 1.5px dashed grey;
-  button{
+  button {
     color: red;
   }
-  
 }
