@@ -6,14 +6,14 @@ class Admin extends Component {
   constructor() {
     super();
     this.state = {
-      home_type: [],
-      bed: [],
-      bath: [],
-      sqft: [],
-      lot_size: [],
-      home_status: [],
-      photo_url: [],
-      home_address: [],
+      home_type: '',
+      bed: 0,
+      bath: 0,
+      sqft: 0,
+      lot_size: 0,
+      home_status: '',
+      photo_url: '',
+      home_address: '',
       homes: []
     };
   }
@@ -41,7 +41,7 @@ class Admin extends Component {
     } = this.state;
 
     axios
-      .post('/api/postNew', {
+      .post('http://localhost:3001/api/postNew', {
         home_type: home_type,
         bed: bed,
         bath: bath,
@@ -62,6 +62,7 @@ class Admin extends Component {
       return (
         <div key={i}>
           <h1> {e.home_type}</h1>
+          <h2>{e.home_status}</h2>
           {/* <h3>{e.home_address}</h3> */}
         </div>
       );
