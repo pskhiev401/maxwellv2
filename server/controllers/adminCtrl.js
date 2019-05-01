@@ -2,7 +2,7 @@ module.exports = {
   postNewListing: (req, res, next) => {
     console.log(req.body, 'console.log of req.body admin.ctrl');
 
-    const db = req.app.post('db');
+    const db = req.app.get('db');
     const {
       home_type,
       bed,
