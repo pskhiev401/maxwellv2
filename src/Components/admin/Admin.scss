@@ -1,18 +1,17 @@
-.post_button{
+.post_button {
   background: lightblue;
-  .new_post_form{
+  .new_post_form {
     width: 30vw;
     display: flex;
     flex-direction: column;
   }
-
 }
 
-.edit_button{
+.edit_button {
   background: lightgoldenrodyellow;
 }
 
-h2{
+h2 {
   border: 1px solid grey;
   background: lightgreen;
   width: fit-content;
