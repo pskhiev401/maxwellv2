@@ -40,7 +40,8 @@ class Admin extends Component {
       photo_url,
       home_address
     } = this.state;
-    axios.post('/api/postNew', {
+    axios
+      .post('/api/postNew', {
         home_type: home_type,
         bed: bed,
         bath: bath,
@@ -52,7 +53,20 @@ class Admin extends Component {
       })
       .then(response => {
         this.setState({ homes: response.data });
-      });
+      })
+      .then(
+        this.setState({
+          home_type: '',
+          bed: 0,
+          bath: 0,
+          sqft: 0,
+          lot_size: 0,
+          home_status: '',
+          photo_url: '',
+          home_address: ''
+        })
+      );
+    alert(`New post successfully listed!`);
   };
 
   render() {
@@ -76,35 +90,43 @@ class Admin extends Component {
             <input
               onChange={e => this.setState({ home_type: e.target.value })}
               placeholder='Home Type (Single Family/Condo/Townhouse)'
+              value={this.state.home_type}
             />
 
             <input
               onChange={e => this.setState({ bed: e.target.value })}
-              placeholder='Bedrooms'
+              // placeholder='Bedrooms'
+              value={this.state.bed}
             />
             <input
               onChange={e => this.setState({ bath: e.target.value })}
-              placeholder='Bathrooms'
+              // placeholder='Bathrooms'
+              value={this.state.bath}
             />
             <input
               onChange={e => this.setState({ sqft: e.target.value })}
-              placeholder='Square Foot'
+              // placeholder='Square Foot'
+              value={this.state.sqft}
             />
             <input
               onChange={e => this.setState({ lot_size: e.target.value })}
-              placeholder='Lot Size (sqft)'
+              // placeholder='Lot Size (sqft)'
+              value={this.state.lot_size}
             />
             <input
               onChange={e => this.setState({ home_status: e.target.value })}
               placeholder='Status'
+              value={this.state.home_status}
             />
             <input
               onChange={e => this.setState({ photo_url: e.target.value })}
               placeholder='Photo URL'
+              value={this.state.photo_url}
             />
             <input
               onChange={e => this.setState({ home_address: e.target.value })}
               placeholder='address'
+              value={this.state.home_address}
             />
           </form>
           <h2 onClick={() => this.handleSubmit()}>Submit</h2>
