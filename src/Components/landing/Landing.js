@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Landing.scss';
 import axios from 'axios';
+import * as emailjs from 'emailjs-com';
+import Swal from 'sweetalert2';
 
 class Landing extends Component {
   constructor() {
@@ -20,6 +22,26 @@ class Landing extends Component {
       this.setState({ homes: res.data });
     });
   }
+
+  submitMessage = () => {
+    console.log('email hit!');
+    const { name, email, message, phone } = this.state;
+    emailjs
+      .send(
+        'amazon_ses',
+        'maxwellv2',
+        {
+          from_name: name,
+          from_email: email,
+          from_phone: phone,
+          message_html: message
+        },
+        'user_gzMEM66SbGx8Ite2WwBvF'
+      )
+      .then(response => {
+        console.log('SUCCESS!', response.status, response.text);
+      });
+  };
 
   render() {
     console.log(this.state);
@@ -66,12 +88,12 @@ class Landing extends Component {
             onChange={e => this.setState({ email: e.target.value })}
           />
           <input
-            type='text'
+            type='phone'
             name='phone'
             id='phone'
             placeholder='Phone'
             value={this.state.phone}
-            onChange={e => this.setState({ name: e.target.value })}
+            onChange={e => this.setState({ phone: e.target.value })}
           />
           <textarea
             required
@@ -82,6 +104,7 @@ class Landing extends Component {
             value={this.state.message}
             onChange={e => this.setState({ message: e.target.value })}
           />
+          <button onClick={() => this.submitMessage()}>Send</button>
         </section>
       </div>
     );
