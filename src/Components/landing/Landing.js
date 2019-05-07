@@ -40,8 +40,6 @@ class Landing extends Component {
       )
       .then(response => {
         console.log('SUCCESS!', response.status, response.text);
-        Swal('Email Sent!', 'We will contact you soon', 'success');
-        this.setState({ name: '', email: '', phone: '', message: '' });
       });
   };
 
