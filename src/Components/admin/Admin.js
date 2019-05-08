@@ -3,9 +3,10 @@ import './Admin.scss';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { Typography } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 
 class Admin extends Component {
   constructor() {
@@ -87,9 +88,18 @@ class Admin extends Component {
     });
     return (
       <div>
-        <h1>Admin Dashboard</h1>
+        <AppBar position='static' color='primary'>
+          <Toolbar>
+            <Typography variant='h4' color='inherit'>
+              Admin Dashboard
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        {/* <h1>Admin Dashboard</h1> */}
         <div className='post_button'>
-          <h2>Post New Listing</h2>
+          <Paper elevation={1}>
+            <Typography variant='h5'>Post New Listing</Typography>
+          </Paper>
           <form className='new_post_form'>
             {/* using setState in each input field instead of making function with 'type=xyz' */}
             <TextField
@@ -97,94 +107,70 @@ class Admin extends Component {
               label='Hometype'
               placeholder='Single/Condo/Family Home'
               margin='normal'
+              onChange={e => this.setState({ home_type: e.target.value })}
+              placeholder='Home Type (Single Family/Condo/Townhouse)'
+              value={this.state.home_type}
             />
             <TextField
               id='standard-with-placeholder'
               label='Bedrooms'
-              // placeholder='Bedrooms'
               margin='normal'
+              onChange={e => this.setState({ bed: e.target.value })}
+              value={this.state.bed}
             />
             <TextField
               id='standard-with-placeholder'
               label='Bathrooms'
-              // placeholder='Bathrooms'
               margin='normal'
+              onChange={e => this.setState({ bath: e.target.value })}
+              value={this.state.bath}
             />
             <TextField
               id='standard-with-placeholder'
               label='Squarefoot'
               placeholder='Sqft'
               margin='normal'
+              onChange={e => this.setState({ sqft: e.target.value })}
+              value={this.state.sqft}
             />
             <TextField
               id='standard-with-placeholder'
               label='Lot Size'
               placeholder='Lot Size in sqft'
               margin='normal'
+              onChange={e => this.setState({ lot_size: e.target.value })}
+              value={this.state.lot_size}
             />
             <TextField
               id='standard-with-placeholder'
               label='Home Status'
               placeholder='Sold/Pending'
               margin='normal'
+              onChange={e => this.setState({ home_status: e.target.value })}
+              value={this.state.home_status}
             />
             <TextField
               id='standard-with-placeholder'
               label='Photo URL'
-              // placeholder='Photo URL'
               margin='normal'
+              onChange={e => this.setState({ photo_url: e.target.value })}
+              value={this.state.photo_url}
             />
             <TextField
               id='standard-with-placeholder'
               label='Home address'
-              // placeholder='Adrress'
               margin='normal'
-            />
-
-            {/* <input
-              onChange={e => this.setState({ home_type: e.target.value })}
-              placeholder='Home Type (Single Family/Condo/Townhouse)'
-              value={this.state.home_type}
-            /> */}
-
-            {/* <input
-              onChange={e => this.setState({ bed: e.target.value })}
-              // placeholder='Bedrooms'
-              value={this.state.bed}
-            />
-            <input
-              onChange={e => this.setState({ bath: e.target.value })}
-              // placeholder='Bathrooms'
-              value={this.state.bath}
-            />
-            <input
-              onChange={e => this.setState({ sqft: e.target.value })}
-              // placeholder='Square Foot'
-              value={this.state.sqft}
-            />
-            <input
-              onChange={e => this.setState({ lot_size: e.target.value })}
-              // placeholder='Lot Size (sqft)'
-              value={this.state.lot_size}
-            />
-            <input
-              onChange={e => this.setState({ home_status: e.target.value })}
-              placeholder='Status'
-              value={this.state.home_status}
-            />
-            <input
-              onChange={e => this.setState({ photo_url: e.target.value })}
-              placeholder='Photo URL'
-              value={this.state.photo_url}
-            />
-            <input
               onChange={e => this.setState({ home_address: e.target.value })}
-              placeholder='address'
               value={this.state.home_address}
-            /> */}
+            />
           </form>
           {/* <h2 onClick={() => this.handleSubmit()}>Submit</h2> */}
-          <Button variant='contained' color='default'>
+          <Button
+            variant='contained'
+            color='default'
+            size='large'
+            onClick={() => this.handleSubmit()}
+          >
             Upload
           </Button>
           {/* handleSubmit function passes all objects inside this.state  */}
