@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Landing.scss';
 import axios from 'axios';
 import * as emailjs from 'emailjs-com';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 class Landing extends Component {
   constructor() {
