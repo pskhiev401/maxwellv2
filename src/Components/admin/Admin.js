@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './Admin.scss';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 
 class Admin extends Component {
   constructor() {
@@ -87,13 +92,62 @@ class Admin extends Component {
           <h2>Post New Listing</h2>
           <form className='new_post_form'>
             {/* using setState in each input field instead of making function with 'type=xyz' */}
-            <input
+            <TextField
+              id='standard-with-placeholder'
+              label='Hometype'
+              placeholder='Single/Condo/Family Home'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Bedrooms'
+              // placeholder='Bedrooms'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Bathrooms'
+              // placeholder='Bathrooms'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Squarefoot'
+              placeholder='Sqft'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Lot Size'
+              placeholder='Lot Size in sqft'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Home Status'
+              placeholder='Sold/Pending'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Photo URL'
+              // placeholder='Photo URL'
+              margin='normal'
+            />
+            <TextField
+              id='standard-with-placeholder'
+              label='Home address'
+              // placeholder='Adrress'
+              margin='normal'
+            />
+
+            {/* <input
               onChange={e => this.setState({ home_type: e.target.value })}
               placeholder='Home Type (Single Family/Condo/Townhouse)'
               value={this.state.home_type}
-            />
+            /> */}
 
-            <input
+            {/* <input
               onChange={e => this.setState({ bed: e.target.value })}
               // placeholder='Bedrooms'
               value={this.state.bed}
@@ -127,9 +181,12 @@ class Admin extends Component {
               onChange={e => this.setState({ home_address: e.target.value })}
               placeholder='address'
               value={this.state.home_address}
-            />
+            /> */}
           </form>
-          <h2 onClick={() => this.handleSubmit()}>Submit</h2>
+          {/* <h2 onClick={() => this.handleSubmit()}>Submit</h2> */}
+          <Button variant='contained' color='default'>
+            Upload
+          </Button>
           {/* handleSubmit function passes all objects inside this.state  */}
         </div>
         <div className='edit_button'>
