@@ -34,8 +34,9 @@ class Admin extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
     //destructuring objects in State
+    // e.preventDefault();
     const {
       home_type,
       bed,
@@ -95,11 +96,13 @@ class Admin extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
+
         {/* <h1>Admin Dashboard</h1> */}
         <div className='post_button'>
           <Paper elevation={1}>
             <Typography variant='h5'>Post New Listing</Typography>
           </Paper>
+
           <form className='new_post_form'>
             {/* using setState in each input field instead of making function with 'type=xyz' */}
             <TextField
@@ -164,12 +167,13 @@ class Admin extends Component {
               value={this.state.home_address}
             />
           </form>
+
           {/* <h2 onClick={() => this.handleSubmit()}>Submit</h2> */}
           <Button
             variant='contained'
             color='default'
             size='large'
-            onClick={() => this.handleSubmit()}
+            onClick={e => this.handleSubmit()}
           >
             Upload
           </Button>
