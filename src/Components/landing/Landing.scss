@@ -1,8 +1,10 @@
-.landing_top {
-  height: 10vh;
-  background: #b3e9e6;
+// .landing_top {
+//   height: 10vh;
+//   background: #b3e9e6;
+// }
+.landing__main{
+  height: 200vh;
 }
-
 .navbar_section {
   margin: 20px;
   width: 90vw;
@@ -14,22 +16,24 @@
   align-items: center;
 }
 .landing_cover {
-  height: 75vh;
+  height: 90vh;
   width: 98vw;
-  background: lightblue;
-  margin: auto;
+  background: url('https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1646&q=80');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; 
   border: 1.5px dashed grey;
   button {
     color: red;
   }
 }
 
-.dfw__map{
+.dfw__map {
   height: 80vh;
   background: lightsalmon;
 }
 
-.about__us{
+.about__us {
   height: 50vh;
   background: lightgreen;
 }

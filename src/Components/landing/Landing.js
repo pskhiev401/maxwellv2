@@ -56,8 +56,8 @@ class Landing extends Component {
     );
 
     return (
-      <div>
-        <div className='landing_top'> Logo Section </div>
+      <div className='Landing__main'>
+        {/* <div className='landing_top'> Logo Section </div> */}
         <div className='navbar_section'>{navbar_items}</div>
         <Link to='/admin'>
           <button>Go To Admin Page</button>
